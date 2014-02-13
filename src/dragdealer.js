@@ -476,7 +476,10 @@ Dragdealer.prototype = {
     }
     this.tapping = false;
 
-    this.setTargetValue(this.value.current);
+    if (!this.options.instantMoveOnTap) {
+      this.setTargetValue(this.value.current);  
+    }
+    
   },
   startDrag: function() {
     if (this.disabled) {
