@@ -469,6 +469,11 @@ Dragdealer.prototype = {
       ];
     }
     this.setTargetValueByOffset(target);
+
+    if (typeof(this.options.onTap) == 'function') {
+      var ratios = this.getRatiosByOffsets(target);
+      this.options.onTap.call(this, ratios[0], ratios[1]);
+    }
   },
   stopTap: function() {
     if (this.disabled || !this.tapping) {
